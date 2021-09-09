@@ -2,6 +2,8 @@
 <ruleset name="byteever-Default">
     <description>A base ruleset that all other byteever rulesets should extend.</description>
 
+    <!-- Configuration -->
+
     <exclude-pattern>*/phpunit.xml*</exclude-pattern>
     <exclude-pattern>*/languages/*</exclude-pattern>
     <exclude-pattern>*/tests/*</exclude-pattern>
@@ -13,6 +15,36 @@
 
     <!-- Ensure certain file types aren't sniffed -->
     <exclude-pattern>*\.(css|js)</exclude-pattern>
+
+    <!-- show sniff codes and show progress -->
+    <arg value="sp"/>
+    <!-- Only sniff PHP files -->
+    <arg name="extensions" value="php"/>
+    <!-- Run up to 8 processes in parallel -->
+    <arg name="parallel" value="8"/>
+
+    <!-- Sniffs -->
+    <!-- Don't allow more than one consecutive blank line (in default cases - does not apply to between functions, etc.) -->
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace" />
+
+    <!-- Space inside parens -->
+    <rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing">
+        <properties>
+            <property name="spacing" value="1" />
+        </properties>
+    </rule>
+
+    <!-- Tab indents -->
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="indent" value="1" />
+            <property name="tabIndent" value="true" />
+            <property name="ignoreIndentationTokens" type="array" value="T_COMMENT,T_DOC_COMMENT_OPEN_TAG" />
+        </properties>
+    </rule>
+
+    <!-- 2 blank lines between functions -->
+    <rule ref="Squiz.WhiteSpace.FunctionSpacing" />
 
     <!-- Don't worry about files that don't contain any code -->
     <rule ref="Internal.NoCodeFound">
@@ -48,15 +80,8 @@
         <!-- Allow same line control structures e.g. if ( true ) { echo 1; } -->
         <exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace"/>
 
-        <!-- Don't require punctuation after inline comments -->
-        <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
-
         <!-- Allow empty catch statements -->
         <exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedCatch"/>
-
-        <!-- Comment punctuation doesn't matter -->
-        <exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop"/>
-        <exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop"/>
 
         <!-- Allow shorthand array syntax -->
         <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/>
