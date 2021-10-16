@@ -43,9 +43,6 @@
         </properties>
     </rule>
 
-    <!-- 2 blank lines between functions -->
-    <rule ref="Squiz.WhiteSpace.FunctionSpacing" />
-
     <!-- Don't worry about files that don't contain any code -->
     <rule ref="Internal.NoCodeFound">
         <severity>0</severity>
