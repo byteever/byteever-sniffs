@@ -4,7 +4,7 @@ Collection of PHP_CodeSniffer sniffs for byteever
 ## Installation
 
 ```bash
-$ composer require --dev byteever/phpcs-composer:dev-master
+$ composer require --dev byteever/php-coding-standards:dev-master
 ```
 
 ## Usage
