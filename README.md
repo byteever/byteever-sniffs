@@ -34,7 +34,7 @@ $ composer run lint
 
 ### IDE Integration
 
-Some IDE integrations of PHPCS fail to register the `byteever-Default` ruleset. In order to rectify this, place `.phpcs.xml.dist` at your project root:
+Some IDE integrations of PHPCS fail to register the `ByteEver-Default` ruleset. In order to rectify this, place `.phpcs.xml.dist` at your project root:
 
 ```xml
 <?xml version="1.0"?>
