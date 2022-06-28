@@ -1,5 +1,5 @@
 {
-    "name": "byteever/php-coding-standards",
+    "name": "byteever/byteever-sniffs",
     "description": "ByteEver PHP Coding Standards",
     "type": "phpcodesniffer-standard",
     "license": "GPL-3.0-only",
@@ -27,7 +27,7 @@
     "scripts": {
         "config-cs": [
             "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
-            "\"vendor/bin/phpcs\" --config-set default_standard byteever-Default"
+            "\"vendor/bin/phpcs\" --config-set default_standard ByteEver-Default"
         ],
         "post-install-cmd": "@config-cs",
         "post-update-cmd": "@config-cs",

@@ -1,10 +1,11 @@
-# byteever PHPCS Configuration
-Collection of PHP_CodeSniffer sniffs for byteever
+# byteever Sniffs
+
+Collection of PHP_CodeSniffer sniffs for ByteEver.
 
 ## Installation
 
-```bash
-$ composer require --dev byteever/php-coding-standards:dev-master
+```php
+composer require byteever/byteever-sniffs
 ```
 
 ## Usage
@@ -37,7 +38,24 @@ Some IDE integrations of PHPCS fail to register the `byteever-Default` ruleset. 
 
 ```xml
 <?xml version="1.0"?>
-<ruleset name="Project Rules">
-	<rule ref="byteever-Default" />
+<ruleset name="ByteEver Coding Standards">
+	<description>My projects ruleset.</description>
+
+	<!-- Configs -->
+	<config name="minimum_supported_wp_version" value="4.7" />
+	<config name="testVersion" value="7.2-" />
+
+	<!-- Rules -->
+	<rule ref="ByteEver-Defaults" />
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="new-text-domain" />
+		</properties>
+	</rule>
+
+	<rule ref="PHPCompatibility">
+		<exclude-pattern>tests/</exclude-pattern>
+	</rule>
 </ruleset>
 ```
