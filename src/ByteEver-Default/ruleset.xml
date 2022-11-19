@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="ByteEver-Default">
-    <description>A base ruleset that all other ByteEver rulesets should extend.</description>
+    <description>A base ruleset that all other ByteEver rules should extend.</description>
 
     <!-- Configuration -->
 	<exclude-pattern>*/languages/*</exclude-pattern>
