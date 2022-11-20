@@ -2,16 +2,6 @@
 <ruleset name="ByteEver-Default">
     <description>A base ruleset that all other ByteEver rules should extend.</description>
 
-    <!-- Configuration -->
-	<exclude-pattern>*/languages/*</exclude-pattern>
-	<exclude-pattern>*/tests/*</exclude-pattern>
-	<exclude-pattern>*/assets/*</exclude-pattern>
-	<exclude-pattern>*/dist/*</exclude-pattern>
-	<exclude-pattern>*/bin/*</exclude-pattern>
-	<exclude-pattern>/vendor/</exclude-pattern>
-	<exclude-pattern>/node_modules/</exclude-pattern>
-	<exclude-pattern>*\.(css|js|xml)</exclude-pattern>
-
 	<!-- How to scan -->
 	<!-- Usage instructions: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage -->
 	<!-- Annotated ruleset: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
@@ -20,19 +10,58 @@
 	<arg name="colors"/>
 	<arg name="extensions" value="php"/>
 	<arg name="parallel" value="8"/><!-- Enables parallel processing when available for faster results. -->
+	<!-- PHPCompatibility -->
+	<rule ref="PHPCompatibilityWP" />
 
-	<!-- Sets the minimum supported WP version to 5.8, which is over a year old. -->
-	<config name="minimum_supported_wp_version" value="5.8" />
-	<!-- Rules: Check PHP version compatibility -->
-	<!-- https://github.com/PHPCompatibility/PHPCompatibility#sniffing-your-code-for-compatibility-with-specific-php-versions -->
-	<config name="testVersion" value="5.6-"/>
-	<!-- https://github.com/PHPCompatibility/PHPCompatibilityWP -->
-	<rule ref="PHPCompatibilityWP"/>
+	<!-- Custom Rules -->
+	<!-- Don't allow more than one consecutive blank line (in default cases - does not apply to between functions, etc.) -->
+	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace" />
+	<!-- Since all files contain classes, a file comment seems extraneous. -->
+	<rule ref="Squiz.Commenting.FileComment">
+		<exclude name="Squiz.Commenting.FileComment.Missing"/>
+	</rule>
 
+	<!-- Tab indents -->
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="indent" value="1" />
+			<property name="tabIndent" value="true" />
+			<property name="ignoreIndentationTokens" type="array" value="T_COMMENT,T_DOC_COMMENT_OPEN_TAG" />
+		</properties>
+	</rule>
+
+	<!-- Space inside parens -->
+	<rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing">
+		<properties>
+			<property name="spacing" value="1" />
+		</properties>
+	</rule>
+
+	<!-- Don't worry about files that don't contain any code -->
+	<rule ref="Internal.NoCodeFound">
+		<severity>0</severity>
+	</rule>
+
+	<!-- Ignore mixed line-endings warnings -->
+	<rule ref="Internal.LineEndings.Mixed">
+		<severity>0</severity>
+	</rule>
+
+	<!-- Internal exceptions (often occur on minified files) -->
+	<rule ref="Internal.Tokenizer.Exception">
+		<severity>0</severity>
+	</rule>
+
+	<!-- For CI, don't fail on warnings -->
+	<config name="ignore_warnings_on_exit" value="1"/>
+
+	<!-- WordPress -->
 	<!-- Include the WordPress standard. -->
 	<rule ref="WordPress">
 		<!-- Forget about file names -->
 		<exclude name="WordPress.Files.FileName"/>
+
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
 
 		<!-- Allow same line control structures e.g. if ( true ) { echo 1; } -->
 		<exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace"/>
@@ -49,11 +78,12 @@
 		<!-- This nonce sniff almost never works right -->
 		<exclude name="WordPress.Security.NonceVerification.Missing"/>
 
+		<!--Disable Database queries-->
 		<exclude name="WordPress.DB.DirectDatabaseQuery.NoCaching" />
 		<exclude name="WordPress.DB.DirectDatabaseQuery.DirectQuery" />
+		<exclude name="WordPress.DB.DirectDatabaseQuery.SchemaChange" />
 	</rule>
 
-	<!-- Include the WordPress-Extra standard. -->
 	<!-- Include the WordPress-Extra standard. -->
 	<rule ref="WordPress-Extra" />
 
@@ -66,21 +96,14 @@
 		<exclude name="Generic.Commenting.DocComment.ShortNotCapital"/>
 	</rule>
 
-	<!-- Custom Rules -->
-	<!-- Don't allow more than one consecutive blank line (in default cases - does not apply to between functions, etc.) -->
-	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace" />
-	<!-- Since all files contain classes, a file comment seems extraneous. -->
-	<rule ref="Squiz.Commenting.FileComment">
-		<exclude name="Squiz.Commenting.FileComment.Missing"/>
+	<!-- Make missing translator comment a warning. -->
+	<rule ref="WordPress.WP.I18n.MissingTranslatorsComment">
+		<type>warning</type>
 	</rule>
-	<!-- Space inside parens -->
-	<rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing">
-		<properties>
-			<property name="spacing" value="1" />
-		</properties>
+
+	<!-- Sometimes we need to override globals -->
+	<rule ref="WordPress.WP.GlobalVariablesOverride.OverrideProhibited">
+		<type>warning</type>
 	</rule>
-	<!-- Don't worry about files that don't contain any code -->
-	<rule ref="Internal.NoCodeFound">
-		<severity>0</severity>
-	</rule>
+
 </ruleset>
