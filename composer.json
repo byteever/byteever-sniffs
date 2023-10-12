@@ -17,9 +17,9 @@
         "byteever"
     ],
     "require": {
-        "wp-coding-standards/wpcs": "^2.3.0",
-        "phpcompatibility/phpcompatibility-wp": "2.1.0",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1"
+        "wp-coding-standards/wpcs": "^3.0",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"
@@ -32,5 +32,10 @@
         "post-install-cmd": "@config-cs",
         "post-update-cmd": "@config-cs",
         "lint": "\"vendor/bin/phpcs\" . "
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }
