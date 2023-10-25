@@ -1,41 +1,41 @@
 {
-    "name": "byteever/byteever-sniffs",
-    "description": "ByteEver PHP Coding Standards",
-    "type": "phpcodesniffer-standard",
-    "license": "GPL-3.0-only",
-    "prefer-stable": true,
-    "authors": [
-        {
-            "name": "Sultan Nasir Uddin",
-            "email": "sultan@byteever.com"
-        }
-    ],
-    "keywords": [
-        "phpcs",
-        "standards",
-        "WordPress",
-        "byteever"
-    ],
-    "require": {
-        "wp-coding-standards/wpcs": "^3.0",
-        "phpcompatibility/phpcompatibility-wp": "^2.1",
+	"name": "byteever/byteever-sniffs",
+	"description": "ByteEver PHP Coding Standards",
+	"type": "phpcodesniffer-standard",
+	"license": "GPL-3.0-only",
+	"prefer-stable": true,
+	"authors": [
+		{
+			"name": "Sultan Nasir Uddin",
+			"email": "sultan@byteever.com"
+		}
+	],
+	"keywords": [
+		"phpcs",
+		"standards",
+		"WordPress",
+		"byteever"
+	],
+	"require": {
+		"wp-coding-standards/wpcs": "^3.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7"
-    },
-    "require-dev": {
-        "roave/security-advisories": "dev-latest"
-    },
-    "scripts": {
-        "config-cs": [
-            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
-            "\"vendor/bin/phpcs\" --config-set default_standard ByteEver-Default"
-        ],
-        "post-install-cmd": "@config-cs",
-        "post-update-cmd": "@config-cs",
-        "lint": "\"vendor/bin/phpcs\" . "
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    }
+	},
+	"require-dev": {
+		"roave/security-advisories": "dev-latest"
+	},
+	"scripts": {
+		"config-cs": [
+			"Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
+			"\"vendor/bin/phpcs\" --config-set default_standard ByteEver-Default"
+		],
+		"post-install-cmd": "@config-cs",
+		"post-update-cmd": "@config-cs",
+		"lint": "\"vendor/bin/phpcs\" . "
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
 }
