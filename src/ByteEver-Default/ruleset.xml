@@ -54,6 +54,9 @@
 	<!-- For CI, don't fail on warnings -->
 	<config name="ignore_warnings_on_exit" value="1"/>
 
+	<!-- Default PHP version compatibility check -->
+	<config name="testVersion" value="7.4-8.4" />
+
 	<!-- WordPress -->
 	<!-- Include the WordPress standard. -->
 	<rule ref="WordPress">
