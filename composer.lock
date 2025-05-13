@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3d695c086e62b9bcfbb5eb2c0371dbd",
+    "content-hash": "f8c976f6044e00719343d4426e55689b",
     "packages": [
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -541,16 +541,16 @@
         },
         {
             "name": "wp-coding-standards/wpcs",
-            "version": "dev-develop",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
-                "reference": "38168bc542ec3565c04f2a88498a2024cdfd9ba1"
+                "reference": "9333efcbff231f10dfd9c56bb7b65818b4733ca7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/38168bc542ec3565c04f2a88498a2024cdfd9ba1",
-                "reference": "38168bc542ec3565c04f2a88498a2024cdfd9ba1",
+                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/9333efcbff231f10dfd9c56bb7b65818b4733ca7",
+                "reference": "9333efcbff231f10dfd9c56bb7b65818b4733ca7",
                 "shasum": ""
             },
             "require": {
@@ -574,7 +574,6 @@
                 "ext-iconv": "For improved results",
                 "ext-mbstring": "For improved results"
             },
-            "default-branch": true,
             "type": "phpcodesniffer-standard",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -604,7 +603,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2025-03-14T13:20:25+00:00"
+            "time": "2024-03-25T16:39:00+00:00"
         }
     ],
     "packages-dev": [
@@ -1543,8 +1542,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roave/security-advisories": 20,
-        "wp-coding-standards/wpcs": 20
+        "roave/security-advisories": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

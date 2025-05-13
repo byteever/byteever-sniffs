@@ -17,9 +17,9 @@
 		"byteever"
 	],
 	"require": {
-		"wp-coding-standards/wpcs": "dev-develop",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7"
+		"wp-coding-standards/wpcs": "^3.1.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest"
