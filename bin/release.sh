@@ -15,11 +15,11 @@ echo "➤ Updating version number..."
 find ./src -type f -name '*.php' -exec sed -i '' -E "s/(@version)[[:space:]]+[0-9.]+/\1 $VERSION/" {} \;
 echo "✓ Version number updated!"
 
-# create a github release
-echo "➤ Creating GitHub release..."
+# Push the changes to the repository and create release.
+echo "➤ Pushing changes and creating GitHub release..."
 git add .
 git commit -m "Release v$VERSION"
 git tag -a "v$VERSION" -m "Release v$VERSION"
 git push origin master --tags
-echo "✓ GitHub release created!"
+echo "✓ Changes pushed and GitHub release created!"
 
