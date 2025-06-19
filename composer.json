@@ -18,19 +18,19 @@
 	],
 	"require": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-		"phpcompatibility/phpcompatibility-wp": "dev-master",
-		"wp-coding-standards/wpcs": "dev-develop"
+		"phpcompatibility/phpcompatibility-wp": "^2.1.7",
+		"wp-coding-standards/wpcs": "^3.1.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest"
 	},
 	"scripts": {
-		"config-cs": [
-			"Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
+		"post-install-cmd": [
 			"\"vendor/bin/phpcs\" --config-set default_standard ByteEver-Default"
 		],
-		"post-install-cmd": "@config-cs",
-		"post-update-cmd": "@config-cs",
+		"post-update-cmd": [
+			"\"vendor/bin/phpcs\" --config-set default_standard ByteEver-Default"
+		],
 		"phpcs": "\"vendor/bin/phpcs\" . "
 	},
 	"config": {

@@ -2,8 +2,18 @@
 # Exit if any command fails.
 set -e
 
+# Show the last tag by sorting the tags.
+echo "➤ Fetching the latest tags..."
+git fetch --tags
+echo "✓ Latest tags fetched!"
+
+# Get and show the last tag
+LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "No tags found")
+echo "➤ Last release tag: $LAST_TAG"
+
 # Ask the user for the version number
 read -p "Enter the version number to release (e.g. 1.2.3): " VERSION
+
 
 # Show the release version and ask for confirmation.
 echo "➤ Preparing release for $VERSION..."
