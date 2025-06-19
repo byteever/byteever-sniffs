@@ -1,6 +1,6 @@
 {
 	"name": "byteever/byteever-sniffs",
-	"description": "ByteEver PHP Coding Standards",
+	"description": "A comprehensive PHP_CodeSniffer ruleset extending WordPress Coding Standards with ByteEver-specific conventions for modern PHP development",
 	"type": "phpcodesniffer-standard",
 	"license": "GPL-3.0-only",
 	"prefer-stable": true,
@@ -17,9 +17,9 @@
 		"byteever"
 	],
 	"require": {
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-		"phpcompatibility/phpcompatibility-wp": "^2.1",
-		"wp-coding-standards/wpcs": "^3.1.0"
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"phpcompatibility/phpcompatibility-wp": "dev-master",
+		"wp-coding-standards/wpcs": "dev-develop"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest"
@@ -31,7 +31,7 @@
 		],
 		"post-install-cmd": "@config-cs",
 		"post-update-cmd": "@config-cs",
-		"lint": "\"vendor/bin/phpcs\" . "
+		"phpcs": "\"vendor/bin/phpcs\" . "
 	},
 	"config": {
 		"allow-plugins": {
